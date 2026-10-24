@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Login | Nanhi Duniya</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #0d1117;
+            color: #ffffff;
+        }
+
+.admin-login-container {
+width: 100%;
+max-width: 440px;
+padding: 36px;
+background: linear-gradient(145deg, #ffffff, #fffaf5);
+border: 1px solid #f0e3e5;
+border-top: 4px solid #b99a62;
+border-radius: 24px;
+color: #33252b;
+box-shadow: 0 18px 45px rgba(75, 43, 55, 0.12);
+animation: cardAppear 0.7s ease-out;
+}
+
+        .admin-icon {
+            font-size: 45px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+h1 {
+text-align: center;
+color: #33252b;
+font-family: Georgia, serif;
+font-size: clamp(27px, 5vw, 34px);
+margin-bottom: 14px;
+letter-spacing: 0.3px;
+}
+
+        .description {
+text-align: center;
+color: #786b70;
+font-size: 14px;
+line-height: 1.8;
+margin-bottom: 25px;
+}
+
+        label {
+display: block;
+margin: 20px 0 9px;
+color: #49343d;
+font-size: 14px;
+font-weight: 700;
+letter-spacing: 0.3px;
+}
+
+        input {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #30363d;
+            border-radius: 9px;
+            background: #222a33;
+            color: white;
+            font-size: 15px;
+        }
+
+
+input {
+width: 100%;
+padding: 14px 15px;
+border: 1px solid #f0e3e5;
+border-radius: 12px;
+background: #fffafc;
+color: #33252b;
+font-size: 15px;
+font-family: inherit;
+transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:hover {
+border-color: #c96f91;
+}
+
+input:focus {
+outline: none;
+border-color: #c96f91;
+background: #ffffff;
+box-shadow: 0 0 0 4px rgba(201, 111, 145, 0.14);
+}
+
+       button {
+width: 100%;
+padding: 15px;
+margin-top: 25px;
+border: none;
+border-radius: 12px;
+background: linear-gradient(135deg, #c96f91, #a94e72);
+color: #ffffff;
+font-size: 16px;
+font-weight: 700;
+letter-spacing: 0.4px;
+cursor: pointer;
+box-shadow: 0 8px 20px rgba(201, 111, 145, 0.22);
+transition: background 0.3s ease, transform 0.3s ease,
+box-shadow 0.3s ease;
+}
+
+        button:hover:not(:disabled) {
+transform: translateY(-3px);
+background: linear-gradient(135deg, #a94e72, #8f3d60);
+box-shadow: 0 12px 28px rgba(201, 111, 145, 0.32);
+}
+
+button:active:not(:disabled) {
+transform: translateY(0);
+}
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        #adminLoginMessage {
+            margin-top: 18px;
+            text-align: center;
+            overflow-wrap: anywhere;
+            line-height: 1.5;
+        }
+
+        .back-home {
+display: block;
+margin-top: 22px;
+text-align: center;
+color: #a94e72;
+font-size: 14px;
+font-weight: 600;
+text-decoration: none;
+transition: color 0.3s ease;
+}
+
+.back-home:hover {
+color: #c96f91;
+text-decoration: underline;
+}
+
+        .forgot-password {
+display: block;
+width: fit-content;
+margin: 15px 0 0 auto;
+color: #a94e72;
+font-size: 13px;
+font-weight: 600;
+text-decoration: none;
+transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+color: #c96f91;
+text-decoration: underline;
+}
+
+@keyframes cardAppear {
+from {
+opacity: 0;
+transform: translateY(18px);
+}
+
+to {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+}
+
+@media (max-width: 480px) {
+.admin-login-container {
+padding: 26px 20px;
+border-radius: 20px;
+}
+
+.admin-icon {
+    font-size: 40px;
+}
+
+}
+
+    </style>
+</head>
+
+<body>
+
+    <main class="admin-login-container">
+
+        <div class="admin-icon">🔐</div>
+
+        <h1>Admin Login</h1>
+
+        <p class="description">
+            Welcome to the Nanhi Duniya Admin Panel.
+            Please sign in to continue.
+        </p>
+
+        <form id="adminLoginForm">
+
+            <label for="adminEmail">Admin Email</label>
+            <input
+                type="email"
+                id="adminEmail"
+                placeholder="Enter admin email"
+                autocomplete="username"
+                required
+            >
+
+            <label for="adminPassword">Password</label>
+            <input
+                type="password"
+                id="adminPassword"
+                placeholder="Enter password"
+                autocomplete="current-password"
+                required
+            >
+
+            <button type="submit" id="adminLoginButton">
+                Sign In Securely 🔒
+            </button>
+
+            <a href="#" id="adminForgotPassword" class="forgot-password">
+    Forgot Password?
+</a>
+
+        </form>
+
+        <p id="adminLoginMessage" aria-live="polite"></p>
+
+        <a href="index.html" class="back-home">
+            ← Back to Home
+        </a>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="auth.js"></script>
+
+    <script>
+    const adminForgotPassword =
+        document.getElementById("adminForgotPassword");
+
+    adminForgotPassword.addEventListener("click", async function(event) {
+        event.preventDefault();
+
+        const email = document.getElementById("adminEmail").value.trim();
+        const message = document.getElementById("adminLoginMessage");
+
+        if (!email) {
+            message.textContent = "Please enter your admin email first.";
+            document.getElementById("adminEmail").focus();
+            return;
+        }
+
+        adminForgotPassword.style.pointerEvents = "none";
+        message.textContent = "Sending reset email...";
+
+        try {
+            const { error } =
+                await supabaseClient.auth.resetPasswordForEmail(email, {
+                    redirectTo:
+                        window.location.origin +
+                        "/reset-password.html?flow=admin"
+                });
+
+            if (error) throw error;
+
+            message.textContent =
+                "If this email is registered, a reset link will be sent. Check your inbox and spam folder. ❤️";
+
+        } catch (error) {
+            console.error("Admin password reset error:", error);
+            message.textContent =
+                "Could not send reset email. Please try again.";
+        } finally {
+            adminForgotPassword.style.pointerEvents = "auto";
+        }
+    });
+</script>
+
+</body>
+</html>

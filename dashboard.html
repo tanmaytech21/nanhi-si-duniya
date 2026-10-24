@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Parent Dashboard | Nanhi Duniya</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+font-family: Arial, sans-serif;
+background: #fffaf5;
+color: #33252b;
+line-height: 1.6;
+min-height: 100vh;
+}
+
+        header {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #f0e3e5;
+    box-shadow: 0 8px 25px rgba(75, 43, 55, 0.06);
+}
+
+        header h2 {
+    color: #a94e72;
+    font-family: Georgia, serif;
+    font-size: 28px;
+    letter-spacing: 0.5px;
+}
+
+        .logout-btn {
+background: linear-gradient(135deg, #c96f91, #a94e72);
+color: white;
+border: none;
+padding: 12px 22px;
+border-radius: 30px;
+cursor: pointer;
+font-weight: bold;
+font-size: 14px;
+box-shadow: 0 5px 15px rgba(169, 78, 114, 0.2);
+transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+transform: translateY(-2px);
+box-shadow: 0 8px 20px rgba(169, 78, 114, 0.3);
+}
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        .welcome-card {
+background: linear-gradient(135deg, #fff0f4, #f8eee2);
+padding: 40px;
+border-radius: 24px;
+margin-bottom: 30px;
+border: 1px solid #f0e3e5;
+box-shadow: 0 12px 30px rgba(75, 43, 55, 0.06);
+position: relative;
+overflow: hidden;
+}
+
+        .welcome-card h1 {
+color: #6f3d52;
+font-family: Georgia, serif;
+font-size: 34px;
+margin-bottom: 15px;
+line-height: 1.3;
+}
+
+.welcome-card p {
+color: #786b70;
+font-size: 16px;
+line-height: 1.9;
+max-width: 650px;
+}
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(220px, 1fr)
+            );
+            gap: 20px;
+        }
+
+        .card {
+background: #ffffff;
+padding: 28px;
+border-radius: 20px;
+border: 1px solid #f0e3e5;
+box-shadow: 0 10px 30px rgba(75, 43, 55, 0.06);
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+transform: translateY(-4px);
+box-shadow: 0 15px 35px rgba(75, 43, 55, 0.10);
+}
+
+        .card .emoji {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+       .card h3 {
+color: #a94e72;
+font-family: Georgia, serif;
+font-size: 22px;
+margin-bottom: 14px;
+}
+
+        .card p {
+            line-height: 1.7;
+            overflow-wrap: anywhere;
+        }
+
+        .action-btn {
+display: inline-block;
+margin-top: 18px;
+padding: 12px 22px;
+background: linear-gradient(135deg, #c96f91, #a94e72);
+color: #ffffff;
+text-decoration: none;
+border: none;
+border-radius: 30px;
+font-weight: bold;
+font-size: 14px;
+cursor: pointer;
+box-shadow: 0 5px 15px rgba(169, 78, 114, 0.18);
+transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+transform: translateY(-2px);
+box-shadow: 0 8px 20px rgba(169, 78, 114, 0.28);
+}
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #888;
+        }
+
+        @media (max-width: 500px) {
+            .welcome-card {
+                padding: 24px;
+            }
+
+            header {
+                padding: 18px 5%;
+            }
+        }
+
+        #parentProfileForm,
+#parentFeeTableBody {
+color: #33252b;
+}
+
+section.card > h2 {
+color: #a94e72 !important;
+font-family: Georgia, serif;
+font-size: 26px;
+margin-bottom: 20px;
+}
+
+#parentProfileForm input {
+background: #fffaf5 !important;
+color: #33252b;
+border: 1px solid #f0e3e5 !important;
+border-radius: 12px !important;
+padding: 14px !important;
+font-family: Arial, sans-serif;
+font-size: 15px;
+transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#parentProfileForm input:focus {
+outline: none;
+border-color: #c96f91 !important;
+box-shadow: 0 0 0 4px rgba(201, 111, 145, 0.12);
+}
+
+#parentProfileForm label {
+display: block;
+color: #6f3d52;
+font-size: 14px;
+font-weight: 600;
+margin-top: 5px;
+letter-spacing: 0.3px;
+}
+
+#parentFeeTableBody td {
+padding: 14px 12px;
+border-bottom: 1px solid #f0e3e5;
+color: #786b70;
+font-size: 14px;
+}
+
+#parentFeeTableBody tr:hover {
+background: #fffaf5;
+}
+
+table thead th {
+color: #6f3d52;
+font-size: 13px;
+font-weight: 700;
+white-space: nowrap;
+}
+
+#demoPaymentButton {
+background: linear-gradient(135deg, #c96f91, #a94e72);
+color: #ffffff;
+border: none;
+border-radius: 30px;
+padding: 13px 24px;
+font-weight: bold;
+font-size: 14px;
+cursor: pointer;
+box-shadow: 0 5px 15px rgba(169, 78, 114, 0.18);
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#demoPaymentButton:hover {
+transform: translateY(-2px);
+box-shadow: 0 8px 20px rgba(169, 78, 114, 0.28);
+}
+
+footer {
+text-align: center;
+padding: 30px 20px;
+margin-top: 40px;
+color: #786b70;
+font-size: 14px;
+line-height: 2;
+border-top: 1px solid #f0e3e5;
+background: rgba(255, 255, 255, 0.65);
+}
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h2>🧸 Nanhi Duniya</h2>
+
+        <button class="logout-btn" id="logoutButton">
+            Logout 🚪
+        </button>
+    </header>
+
+    <main class="container">
+
+        <section class="welcome-card">
+            <h1>Welcome, Dear Parent! ❤️</h1>
+
+            <p>
+                We're happy to have you at Nanhi Duniya.
+                Your child's happiness and care matter to us! 🌈
+            </p>
+        </section>
+
+
+        <section class="card" style="margin-bottom: 30px;">
+    <h2 style="color: #df78a0; margin-bottom: 20px;">
+        👤 My Profile
+    </h2><form id="parentProfileForm">
+    <label for="profileParentName">Parent Name</label>
+    <input
+        type="text"
+        id="profileParentName"
+        required
+        maxlength="100"
+        autocomplete="name"
+        placeholder="Enter your full name"
+        style="width: 100%; padding: 12px; margin: 8px 0 16px; border: 1px solid #ddd; border-radius: 8px;"
+    >
+
+    <label for="profilePhone">Phone Number</label>
+    <input
+        type="tel"
+        id="profilePhone"
+        maxlength="20"
+        autocomplete="tel"
+        placeholder="Enter your phone number"
+        style="width: 100%; padding: 12px; margin: 8px 0 16px; border: 1px solid #ddd; border-radius: 8px;"
+    >
+
+    <label for="profileChildName">Child Name</label>
+    <input
+        type="text"
+        id="profileChildName"
+        maxlength="100"
+        placeholder="Enter child's name"
+        style="width: 100%; padding: 12px; margin: 8px 0 16px; border: 1px solid #ddd; border-radius: 8px;"
+    >
+
+    <label for="profileChildAge">Child Age</label>
+    <input
+        type="text"
+        id="profileChildAge"
+        maxlength="30"
+        placeholder="Enter child's age"
+        style="width: 100%; padding: 12px; margin: 8px 0 16px; border: 1px solid #ddd; border-radius: 8px;"
+    >
+
+    <button
+        type="submit"
+        id="saveParentProfile"
+        class="action-btn"
+        style="border: none; cursor: pointer;"
+    >
+        Save Profile ❤️
+    </button>
+
+    <p id="profileMessage" aria-live="polite" style="margin-top: 15px;"></p>
+</form>
+
+</section>
+
+<section class="card" style="margin-bottom: 30px;">
+    <h2 style="color: #df78a0; margin-bottom: 10px;">
+        💰 My Fees
+    </h2><p style="margin-bottom: 20px; line-height: 1.7;">
+    Yahan aap apne child ki monthly fee aur payment status dekh sakte hain. ❤️
+</p>
+
+<div style="overflow-x: auto;">
+    <table style="width: 100%; border-collapse: collapse; text-align: left;">
+        <thead>
+            <tr style="background: #ffd6e7;">
+                <th style="padding: 12px;">Child Name</th>
+                <th style="padding: 12px;">Monthly Fee</th>
+                <th style="padding: 12px;">Billing Month</th>
+                <th style="padding: 12px;">Status</th>
+                <th style="padding: 12px;">Demo Payment</th>
+            </tr>
+        </thead>
+
+        <tbody id="parentFeeTableBody">
+            <tr>
+                <td colspan="5" style="padding: 15px;">
+                    Loading fee records... ❤️
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p id="parentFeeMessage" aria-live="polite" style="margin-top: 15px;"></p>
+
+<div id="demoPaymentArea" style="margin-top: 20px;">
+    <button type="button" id="demoPaymentButton" class="action-btn">
+        🧪 Try Demo Payment
+    </button>
+    <p id="demoPaymentMessage" aria-live="polite"></p>
+</div>
+
+</section>
+
+        <section class="cards">
+
+            <div class="card">
+                <div class="emoji">👤</div>
+
+                <h3>My Account</h3>
+
+                <p id="parentEmail">
+                    Loading account...
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="emoji">📝</div>
+
+                <h3>Admission Enquiry</h3>
+
+                <p>
+                    Want to enquire about admission for your child?
+                    Contact us using our enquiry form.
+                </p>
+
+                <a href="index.html#admission" class="action-btn">
+                    Enquire Now ❤️
+                </a>
+            </div>
+
+            <div class="card">
+                <div class="emoji">📞</div>
+
+                <h3>Need Help?</h3>
+
+                <p>
+                    Have questions about our creche or daycare?
+                    Our team will be happy to help.
+                </p>
+
+                <a href="index.html#contact" class="action-btn">
+                    Contact Us
+                </a>
+            </div>
+
+        </section>
+
+        <dialog id="demoPaymentModal" style="border: none; border-radius: 20px; padding: 28px; width: 90%; max-width: 400px; margin: auto; box-shadow: 0 10px 40px #e8b7cc;">
+    <h2 style="color: #df78a0; margin-bottom: 15px;">
+        🧸 Demo Payment
+    </h2><p style="line-height: 1.7; margin-bottom: 15px;">
+    Welcome to Nanhi Duniya! ❤️
+</p>
+
+<div style="background: #fff7fb; padding: 16px; border-radius: 12px; margin-bottom: 18px; line-height: 2;">
+    <p>🧸 Child: <strong id="demoChildName">—</strong></p>
+    <p>💰 Monthly Fee: <strong id="demoFeeAmount">—</strong></p>
+    <p>📅 Billing Month: <strong id="demoBillingMonth">—</strong></p>
+</div><p style="line-height: 1.7; margin-bottom: 20px;">
+    🧪 This is a demo only. No real money will be charged, and your fee status will not change.
+</p>
+
+<button
+    type="button"
+    id="confirmDemoPayment"
+    style="background: #ff8fab; color: white; border: none; padding: 12px 18px; border-radius: 10px; font-weight: bold; cursor: pointer;"
+>
+    Confirm Demo Payment ❤️
+</button>
+
+<button
+    type="button"
+    id="closeDemoPayment"
+    style="background: #eee; color: #444; border: none; padding: 12px 18px; border-radius: 10px; margin-top: 10px; cursor: pointer;"
+>
+    Cancel
+</button>
+
+<p id="demoModalMessage" aria-live="polite" style="margin-top: 15px; line-height: 1.6;"></p>
+
+</dialog><style>
+    #demoPaymentModal::backdrop {
+        background: rgba(60, 35, 50, 0.45);
+    }
+</style>
+
+    </main>
+
+    <footer>
+        Made with ❤️ for little stars ✨
+        <br>
+        © Nanhi Duniya Creche & Day Care
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="auth.js"></script>
+
+</body>
+
+</html>
